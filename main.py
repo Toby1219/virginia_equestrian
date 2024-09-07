@@ -13,7 +13,8 @@ import pandas as pd
 from dataclasses import dataclass, field, asdict
 import time
 
-asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+#Enable this for widows only
+#asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
 def logs():
     path = 'logs'
@@ -265,7 +266,7 @@ async def main():
 
         count += 1
     
-    file_soter(path)
+    #file_soter(path)
     
 
 if __name__ == '__main__':
