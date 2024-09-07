@@ -86,7 +86,7 @@ async def fetch(url:str)->bytes:
         log.error(f'Error at: {url}', exc_info=True)
 
 async def pipeline(value:str)->str:
-    char_removed =['<br>', '<t>', '�']
+    char_removed =['<br>', '<t>', '[MAP]']
     new_value: str = ''
     for char in char_removed:
         new_value = value.replace(char, '').strip()
@@ -141,6 +141,8 @@ async def scrape_data(responses:bytes)->ScrapedData:
         try:
             website = tab.select('p')[2].text.strip().replace('Website:', '').strip()
         except:
+            if 'Phone: ' in website:
+                pass
             website = 'No website link'
             
         raw_address = tab.select_one('p').text.split('\n\t')[3:][0:4]
