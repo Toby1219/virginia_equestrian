@@ -131,7 +131,6 @@ async def scrape_data(responses:bytes)->ScrapedData:
         name = tab.p.b.text
         email = tab.div.text
         phone_no = None
-
         try:
             p_tag = tab.find_all('p')[2].text.strip()
             info = p_tag.replace("Website:", '').replace(":  ", ' ').strip().split()
